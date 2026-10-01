@@ -34,7 +34,7 @@ export function FacilitatorCard({
   locale,
 }: FacilitatorCardProps) {
   return (
-    <div className="bg-surface-container-lowest dark:bg-gray-900 rounded-3xl p-6 shadow-ambient border border-outline-variant/30 dark:border-gray-800 flex flex-col justify-between hover:shadow-interactive transition-all duration-200">
+    <div className="bg-surface dark:bg-[#1e1f20] rounded-3xl p-5 sm:p-6 shadow-ambient border border-outline-variant/30 dark:border-[#3c4043] flex flex-col justify-between hover:shadow-interactive transition-all duration-200">
       <div>
         {/* Header Card: Image & Availability Tag */}
         <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-surface-container mb-5">
@@ -51,14 +51,14 @@ export function FacilitatorCard({
               Tersedia Hari Ini
             </span>
           ) : (
-            <span className="absolute top-3 right-3 px-3 py-1 rounded-full bg-surface-container-high/90 dark:bg-gray-800 text-on-surface dark:text-white text-[11px] font-bold backdrop-blur-sm shadow-sm">
+            <span className="absolute top-3 right-3 px-3 py-1 rounded-full bg-surface-container-high/90 dark:bg-[#282a2c]/90 text-on-surface text-[11px] font-bold backdrop-blur-sm shadow-sm">
               Slot Besok
             </span>
           )}
         </div>
 
         <div className="flex items-center justify-between text-xs text-outline mb-1">
-          <span className="font-semibold text-secondary dark:text-blue-400">
+          <span className="font-semibold text-secondary dark:text-[#8ab4f8]">
             {sipp}
           </span>
           <span className="flex items-center gap-0.5 text-amber-500 font-bold">
@@ -67,7 +67,7 @@ export function FacilitatorCard({
           </span>
         </div>
 
-        <h3 className="font-heading text-lg font-bold text-on-surface dark:text-white">
+        <h3 className="font-heading text-lg font-bold text-on-surface">
           {name}
         </h3>
         <p className="text-xs text-[#F58A31] font-semibold mb-3">
@@ -81,7 +81,7 @@ export function FacilitatorCard({
           {tags.map((tag, idx) => (
             <span
               key={idx}
-              className="px-2 py-0.5 rounded-md bg-surface-container-low dark:bg-gray-800 text-[11px] text-on-surface-variant dark:text-gray-300 font-medium"
+              className="px-2 py-0.5 rounded-md bg-surface-container-low dark:bg-[#282a2c] text-[11px] text-on-surface-variant font-medium"
             >
               {tag}
             </span>
@@ -91,7 +91,7 @@ export function FacilitatorCard({
 
       <Link
         href={`/${locale}/konseling/booking`}
-        className="w-full py-2.5 px-4 rounded-full bg-surface-container dark:bg-gray-800 hover:bg-[#14508A] hover:text-white text-on-surface dark:text-white font-semibold text-xs text-center transition-all duration-200"
+        className="w-full py-2.5 px-4 rounded-full bg-surface-container dark:bg-[#282a2c] hover:bg-[#14508A] hover:text-white dark:hover:bg-[#8ab4f8] dark:hover:text-[#131314] text-on-surface font-semibold text-xs text-center transition-all duration-200"
       >
         Lihat Profil &amp; Jadwal
       </Link>

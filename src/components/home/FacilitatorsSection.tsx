@@ -53,7 +53,7 @@ export function FacilitatorsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div className="max-w-2xl">
-            <span className="px-3 py-1 rounded-full bg-[#14508A]/10 dark:bg-blue-900/30 text-[#14508A] dark:text-blue-400 text-xs font-bold uppercase tracking-wider">
+            <span className="px-3 py-1 rounded-full bg-[#14508A]/10 dark:bg-blue-900/30 text-[#14508A] dark:text-[#8ab4f8] text-xs font-bold uppercase tracking-wider">
               Fasilitator &amp; Tenaga Ahli
             </span>
             <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl text-on-surface font-bold mt-3">
@@ -65,13 +65,13 @@ export function FacilitatorsSection() {
           </div>
           <div className="mt-4 md:mt-0 flex gap-2">
             <button
-              className="w-10 h-10 rounded-full border border-outline-variant/40 dark:border-gray-700 flex items-center justify-center hover:bg-surface-container dark:hover:bg-gray-800 transition-colors"
+              className="w-10 h-10 rounded-full border border-outline-variant/40 dark:border-[#3c4043] flex items-center justify-center hover:bg-surface-container dark:hover:bg-[#282a2c] transition-colors"
               aria-label="Previous"
             >
               <ChevronLeft className="w-5 h-5 text-on-surface" />
             </button>
             <button
-              className="w-10 h-10 rounded-full border border-outline-variant/40 dark:border-gray-700 flex items-center justify-center hover:bg-surface-container dark:hover:bg-gray-800 transition-colors"
+              className="w-10 h-10 rounded-full border border-outline-variant/40 dark:border-[#3c4043] flex items-center justify-center hover:bg-surface-container dark:hover:bg-[#282a2c] transition-colors"
               aria-label="Next"
             >
               <ChevronRight className="w-5 h-5 text-on-surface" />

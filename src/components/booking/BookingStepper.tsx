@@ -63,11 +63,29 @@ export function BookingStepper({ locale }: { locale: string }) {
   ];
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 md:p-8">
-      {/* Progress Bar */}
-      <div className="mb-8">
+    <div className="bg-surface dark:bg-[#1e1f20] rounded-2xl shadow-ambient border border-outline-variant/30 dark:border-[#3c4043] p-4 sm:p-6 md:p-8">
+      {/* Mobile Stepper Header */}
+      <div className="md:hidden mb-6">
+        <div className="flex items-center justify-between text-xs font-semibold mb-2">
+          <span className="text-brand-primary uppercase tracking-wider">
+            Langkah {currentStep} dari 5
+          </span>
+          <span className="text-on-surface truncate max-w-[180px]">
+            {steps[currentStep - 1]}
+          </span>
+        </div>
+        <div className="w-full h-2 bg-surface-container dark:bg-[#282a2c] rounded-full overflow-hidden">
+          <div
+            className="h-full bg-brand-primary transition-all duration-300 rounded-full"
+            style={{ width: `${(currentStep / 5) * 100}%` }}
+          />
+        </div>
+      </div>
+
+      {/* Desktop Stepper Progress Bar */}
+      <div className="hidden md:block mb-8">
         <div className="flex items-center justify-between relative">
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-gray-200 -z-10" />
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-surface-container dark:bg-[#282a2c] -z-10" />
           <div 
             className="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-brand-primary -z-10 transition-all duration-300"
             style={{ width: `${((currentStep - 1) / 4) * 100}%` }}
@@ -79,13 +97,13 @@ export function BookingStepper({ locale }: { locale: string }) {
             return (
               <div key={stepNum} className="flex flex-col items-center">
                 <div 
-                  className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold mb-2
-                    ${isCurrent ? 'bg-brand-primary text-white ring-4 ring-blue-50' : 
-                      isCompleted ? 'bg-brand-primary text-white' : 'bg-gray-200 text-gray-500'}`}
+                  className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-semibold mb-2 transition-all
+                    ${isCurrent ? 'bg-brand-primary text-white dark:text-[#131314] ring-4 ring-brand-primary/20 shadow-sm' : 
+                      isCompleted ? 'bg-brand-primary text-white dark:text-[#131314]' : 'bg-surface-container dark:bg-[#282a2c] text-outline'}`}
                 >
                   {isCompleted ? '✓' : stepNum}
                 </div>
-                <span className={`text-xs hidden md:block ${isCurrent || isCompleted ? 'text-gray-900 font-medium' : 'text-gray-400'}`}>
+                <span className={`text-xs ${isCurrent || isCompleted ? 'text-on-surface font-semibold' : 'text-outline'}`}>
                   {label}
                 </span>
               </div>
@@ -95,7 +113,7 @@ export function BookingStepper({ locale }: { locale: string }) {
       </div>
 
       {/* Step Content */}
-      <div className="mb-8 min-h-[400px]">
+      <div className="mb-6 min-h-[380px]">
         {currentStep === 1 && <Step1DataDiri formData={formData} onChange={setFormData} locale={locale} onNext={handleNext} />}
         {currentStep === 2 && <Step2Recommendation formData={formData} onChange={setFormData} triageResult={triageResult} locale={locale} onNext={handleNext} onBack={handleBack} />}
         {currentStep === 3 && <Step3Facilitator formData={formData} onChange={setFormData} locale={locale} onNext={handleNext} onBack={handleBack} />}

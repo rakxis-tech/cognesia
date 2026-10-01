@@ -80,33 +80,33 @@ export function AssessmentForm({ test, locale }: AssessmentFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      <div className="bg-blue-50 p-4 rounded-lg mb-6">
-        <h4 className="font-semibold text-primary">{t('summary_title')}</h4>
-        <p className="text-sm text-gray-700">{testName}</p>
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+      <div className="bg-primary/10 dark:bg-[#8ab4f8]/10 p-4 rounded-xl border border-primary/20">
+        <h4 className="font-bold text-sm text-[#14508A] dark:text-[#8ab4f8]">{t('summary_title')}</h4>
+        <p className="text-xs sm:text-sm text-on-surface mt-0.5">{testName}</p>
       </div>
 
       <div className="space-y-4">
         <div>
-          <Label htmlFor="name">{t('form_name')}</Label>
-          <Input id="name" {...register('name')} />
-          {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
+          <Label htmlFor="name" className="text-xs font-bold uppercase tracking-wider text-on-surface">{t('form_name')}</Label>
+          <Input id="name" {...register('name')} className="text-base sm:text-sm bg-surface dark:bg-[#282a2c] border-outline-variant/40 dark:border-[#3c4043] text-on-surface mt-1 rounded-xl" />
+          {errors.name && <p className="text-red-500 text-xs mt-1 font-medium">{errors.name.message}</p>}
         </div>
 
         <div>
-          <Label htmlFor="email">{t('form_email')}</Label>
-          <Input id="email" type="email" {...register('email')} />
-          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+          <Label htmlFor="email" className="text-xs font-bold uppercase tracking-wider text-on-surface">{t('form_email')}</Label>
+          <Input id="email" type="email" {...register('email')} className="text-base sm:text-sm bg-surface dark:bg-[#282a2c] border-outline-variant/40 dark:border-[#3c4043] text-on-surface mt-1 rounded-xl" />
+          {errors.email && <p className="text-red-500 text-xs mt-1 font-medium">{errors.email.message}</p>}
         </div>
 
         <div>
-          <Label htmlFor="phone">{t('form_phone')}</Label>
-          <Input id="phone" type="tel" {...register('phone')} />
-          {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>}
+          <Label htmlFor="phone" className="text-xs font-bold uppercase tracking-wider text-on-surface">{t('form_phone')}</Label>
+          <Input id="phone" type="tel" {...register('phone')} className="text-base sm:text-sm bg-surface dark:bg-[#282a2c] border-outline-variant/40 dark:border-[#3c4043] text-on-surface mt-1 rounded-xl" />
+          {errors.phone && <p className="text-red-500 text-xs mt-1 font-medium">{errors.phone.message}</p>}
         </div>
 
         <div>
-          <Label>{t('form_booker_type')}</Label>
+          <Label className="text-xs font-bold uppercase tracking-wider text-on-surface">{t('form_booker_type')}</Label>
           <RadioGroup
             defaultValue="individual"
             onValueChange={(value) => setValue('bookerType', value as 'individual' | 'institution')}
@@ -114,46 +114,49 @@ export function AssessmentForm({ test, locale }: AssessmentFormProps) {
           >
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="individual" id="individual" />
-              <Label htmlFor="individual" className="font-normal">{t('form_individual')}</Label>
+              <Label htmlFor="individual" className="font-medium text-xs sm:text-sm text-on-surface cursor-pointer">{t('form_individual')}</Label>
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="institution" id="institution" />
-              <Label htmlFor="institution" className="font-normal">{t('form_institution')}</Label>
+              <Label htmlFor="institution" className="font-medium text-xs sm:text-sm text-on-surface cursor-pointer">{t('form_institution')}</Label>
             </div>
           </RadioGroup>
         </div>
 
         {bookerType === 'institution' && (
           <div>
-            <Label htmlFor="institutionName">{t('form_institution_name')}</Label>
-            <Input id="institutionName" {...register('institutionName')} />
-            {errors.institutionName && <p className="text-red-500 text-sm mt-1">{errors.institutionName.message}</p>}
+            <Label htmlFor="institutionName" className="text-xs font-bold uppercase tracking-wider text-on-surface">{t('form_institution_name')}</Label>
+            <Input id="institutionName" {...register('institutionName')} className="text-base sm:text-sm bg-surface dark:bg-[#282a2c] border-outline-variant/40 dark:border-[#3c4043] text-on-surface mt-1 rounded-xl" />
+            {errors.institutionName && <p className="text-red-500 text-xs mt-1 font-medium">{errors.institutionName.message}</p>}
           </div>
         )}
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <Label htmlFor="participants">{t('form_participants')}</Label>
-            <Input id="participants" type="number" min="1" {...register('participants', { valueAsNumber: true })} />
-            {errors.participants && <p className="text-red-500 text-sm mt-1">{errors.participants.message}</p>}
+            <Label htmlFor="participants" className="text-xs font-bold uppercase tracking-wider text-on-surface">{t('form_participants')}</Label>
+            <Input id="participants" type="number" min="1" {...register('participants', { valueAsNumber: true })} className="text-base sm:text-sm bg-surface dark:bg-[#282a2c] border-outline-variant/40 dark:border-[#3c4043] text-on-surface mt-1 rounded-xl" />
+            {errors.participants && <p className="text-red-500 text-xs mt-1 font-medium">{errors.participants.message}</p>}
           </div>
 
           <div>
-            <Label htmlFor="preferredDate">{t('form_preferred_date')}</Label>
-            <Input id="preferredDate" type="date" {...register('preferredDate')} />
-            {errors.preferredDate && <p className="text-red-500 text-sm mt-1">{errors.preferredDate.message}</p>}
+            <Label htmlFor="preferredDate" className="text-xs font-bold uppercase tracking-wider text-on-surface">{t('form_preferred_date')}</Label>
+            <Input id="preferredDate" type="date" {...register('preferredDate')} className="text-base sm:text-sm bg-surface dark:bg-[#282a2c] border-outline-variant/40 dark:border-[#3c4043] text-on-surface mt-1 rounded-xl" />
+            {errors.preferredDate && <p className="text-red-500 text-xs mt-1 font-medium">{errors.preferredDate.message}</p>}
           </div>
         </div>
 
         <div>
-          <Label htmlFor="notes">{t('form_notes')} ({commonT('optional')})</Label>
-          <Textarea id="notes" {...register('notes')} />
+          <Label htmlFor="notes" className="text-xs font-bold uppercase tracking-wider text-on-surface">{t('form_notes')} ({commonT('optional')})</Label>
+          <Textarea id="notes" rows={3} {...register('notes')} className="text-base sm:text-sm bg-surface dark:bg-[#282a2c] border-outline-variant/40 dark:border-[#3c4043] text-on-surface mt-1 rounded-xl" />
         </div>
       </div>
 
-      <Button type="submit" className="w-full bg-brand-accent hover:bg-opacity-90">
+      <button 
+        type="submit" 
+        className="w-full bg-[#F58A31] hover:bg-[#e07722] text-[#14508A] font-bold py-3.5 px-6 rounded-full shadow-orange-glow transition-all active:scale-95 text-sm"
+      >
         {t('order_via_wa')}
-      </Button>
+      </button>
     </form>
   );
 }

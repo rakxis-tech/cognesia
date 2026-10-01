@@ -101,18 +101,18 @@ export function Step1DataDiri({ formData, onChange, locale, onNext }: Step1Props
   return (
     <form onSubmit={handleNextClick} className="space-y-6">
       <div>
-        <h2 className="font-heading text-2xl font-bold text-[#14508A] dark:text-blue-400">
+        <h2 className="font-heading text-xl sm:text-2xl font-bold text-[#14508A] dark:text-[#8ab4f8]">
           {t('step_1')} — Data Diri &amp; Keluhan Awal
         </h2>
-        <p className="text-sm text-outline mt-1">
+        <p className="text-xs sm:text-sm text-outline mt-1 leading-relaxed">
           Informasi Anda dijamin kerahasiaannya sesuai Kode Etik Psikologi Indonesia dan UU PDP.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
         {/* Name */}
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-on-surface dark:text-gray-200 mb-1.5">
+          <label className="block text-xs font-bold uppercase tracking-wider text-on-surface mb-1.5">
             {t('form_name')} <span className="text-red-500">*</span>
           </label>
           <input
@@ -121,10 +121,10 @@ export function Step1DataDiri({ formData, onChange, locale, onNext }: Step1Props
             placeholder="e.g. Budi Pratama"
             value={formData.name || ''}
             onChange={handleChange}
-            className={`w-full px-4 py-3 rounded-xl border text-sm bg-canvas dark:bg-gray-800 text-on-surface dark:text-white transition-all focus:outline-none focus:ring-2 ${
+            className={`w-full px-4 py-3 rounded-xl border text-base sm:text-sm bg-canvas dark:bg-[#282a2c] text-on-surface transition-all focus:outline-none focus:ring-2 ${
               errors.name
                 ? 'border-red-500 focus:ring-red-400'
-                : 'border-border-subtle dark:border-gray-700 focus:ring-[#14508A]'
+                : 'border-border-subtle dark:border-[#3c4043] focus:ring-brand-primary'
             }`}
           />
           {errors.name && (
@@ -137,7 +137,7 @@ export function Step1DataDiri({ formData, onChange, locale, onNext }: Step1Props
 
         {/* Email */}
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-on-surface dark:text-gray-200 mb-1.5">
+          <label className="block text-xs font-bold uppercase tracking-wider text-on-surface mb-1.5">
             {t('form_email')} <span className="text-red-500">*</span>
           </label>
           <input
@@ -146,10 +146,10 @@ export function Step1DataDiri({ formData, onChange, locale, onNext }: Step1Props
             placeholder="nama@email.com"
             value={formData.email || ''}
             onChange={handleChange}
-            className={`w-full px-4 py-3 rounded-xl border text-sm bg-canvas dark:bg-gray-800 text-on-surface dark:text-white transition-all focus:outline-none focus:ring-2 ${
+            className={`w-full px-4 py-3 rounded-xl border text-base sm:text-sm bg-canvas dark:bg-[#282a2c] text-on-surface transition-all focus:outline-none focus:ring-2 ${
               errors.email
                 ? 'border-red-500 focus:ring-red-400'
-                : 'border-border-subtle dark:border-gray-700 focus:ring-[#14508A]'
+                : 'border-border-subtle dark:border-[#3c4043] focus:ring-brand-primary'
             }`}
           />
           {errors.email && (
@@ -162,7 +162,7 @@ export function Step1DataDiri({ formData, onChange, locale, onNext }: Step1Props
 
         {/* WhatsApp Phone */}
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-on-surface dark:text-gray-200 mb-1.5">
+          <label className="block text-xs font-bold uppercase tracking-wider text-on-surface mb-1.5">
             {t('form_phone')} <span className="text-red-500">*</span>
           </label>
           <input
@@ -171,10 +171,10 @@ export function Step1DataDiri({ formData, onChange, locale, onNext }: Step1Props
             placeholder="081234567890"
             value={formData.phone || ''}
             onChange={handleChange}
-            className={`w-full px-4 py-3 rounded-xl border text-sm bg-canvas dark:bg-gray-800 text-on-surface dark:text-white transition-all focus:outline-none focus:ring-2 ${
+            className={`w-full px-4 py-3 rounded-xl border text-base sm:text-sm bg-canvas dark:bg-[#282a2c] text-on-surface transition-all focus:outline-none focus:ring-2 ${
               errors.phone
                 ? 'border-red-500 focus:ring-red-400'
-                : 'border-border-subtle dark:border-gray-700 focus:ring-[#14508A]'
+                : 'border-border-subtle dark:border-[#3c4043] focus:ring-brand-primary'
             }`}
           />
           {errors.phone && (
@@ -187,7 +187,7 @@ export function Step1DataDiri({ formData, onChange, locale, onNext }: Step1Props
 
         {/* Age */}
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-on-surface dark:text-gray-200 mb-1.5">
+          <label className="block text-xs font-bold uppercase tracking-wider text-on-surface mb-1.5">
             {t('form_age')} (Tahun) <span className="text-red-500">*</span>
           </label>
           <input
@@ -198,10 +198,10 @@ export function Step1DataDiri({ formData, onChange, locale, onNext }: Step1Props
             max={100}
             value={formData.age ?? ''}
             onChange={handleChange}
-            className={`w-full px-4 py-3 rounded-xl border text-sm bg-canvas dark:bg-gray-800 text-on-surface dark:text-white transition-all focus:outline-none focus:ring-2 ${
+            className={`w-full px-4 py-3 rounded-xl border text-base sm:text-sm bg-canvas dark:bg-[#282a2c] text-on-surface transition-all focus:outline-none focus:ring-2 ${
               errors.age
                 ? 'border-red-500 focus:ring-red-400'
-                : 'border-border-subtle dark:border-gray-700 focus:ring-[#14508A]'
+                : 'border-border-subtle dark:border-[#3c4043] focus:ring-brand-primary'
             }`}
           />
           {errors.age && (
@@ -215,17 +215,17 @@ export function Step1DataDiri({ formData, onChange, locale, onNext }: Step1Props
 
       {/* Complaint Category Dropdown */}
       <div>
-        <label className="block text-xs font-bold uppercase tracking-wider text-on-surface dark:text-gray-200 mb-1.5">
+        <label className="block text-xs font-bold uppercase tracking-wider text-on-surface mb-1.5">
           {t('form_complaint_category')} <span className="text-red-500">*</span>
         </label>
         <select
           name="complaint_category"
           value={formData.complaint_category || ''}
           onChange={handleChange}
-          className={`w-full px-4 py-3 rounded-xl border text-sm bg-canvas dark:bg-gray-800 text-on-surface dark:text-white transition-all focus:outline-none focus:ring-2 ${
+          className={`w-full px-4 py-3 rounded-xl border text-base sm:text-sm bg-canvas dark:bg-[#282a2c] text-on-surface transition-all focus:outline-none focus:ring-2 ${
             errors.complaint_category
               ? 'border-red-500 focus:ring-red-400'
-              : 'border-border-subtle dark:border-gray-700 focus:ring-[#14508A]'
+              : 'border-border-subtle dark:border-[#3c4043] focus:ring-brand-primary'
           }`}
         >
           <option value="">-- Pilih Kategori Keluhan Utama --</option>
@@ -245,7 +245,7 @@ export function Step1DataDiri({ formData, onChange, locale, onNext }: Step1Props
 
       {/* Complaint Description */}
       <div>
-        <label className="block text-xs font-bold uppercase tracking-wider text-on-surface dark:text-gray-200 mb-1.5">
+        <label className="block text-xs font-bold uppercase tracking-wider text-on-surface mb-1.5">
           {t('form_complaint_desc')} <span className="text-red-500">*</span>
         </label>
         <textarea
@@ -254,10 +254,10 @@ export function Step1DataDiri({ formData, onChange, locale, onNext }: Step1Props
           placeholder={t('form_complaint_placeholder')}
           value={formData.complaint_description || ''}
           onChange={handleChange}
-          className={`w-full px-4 py-3 rounded-xl border text-sm bg-canvas dark:bg-gray-800 text-on-surface dark:text-white transition-all focus:outline-none focus:ring-2 ${
+          className={`w-full px-4 py-3 rounded-xl border text-base sm:text-sm bg-canvas dark:bg-[#282a2c] text-on-surface transition-all focus:outline-none focus:ring-2 ${
             errors.complaint_description
               ? 'border-red-500 focus:ring-red-400'
-              : 'border-border-subtle dark:border-gray-700 focus:ring-[#14508A]'
+              : 'border-border-subtle dark:border-[#3c4043] focus:ring-brand-primary'
           }`}
         />
         {errors.complaint_description && (
@@ -269,16 +269,16 @@ export function Step1DataDiri({ formData, onChange, locale, onNext }: Step1Props
       </div>
 
       {/* Informed & Privacy Consents */}
-      <div className="space-y-3 p-4 rounded-2xl bg-surface-container-low dark:bg-gray-800/50 border border-outline-variant/30 dark:border-gray-700">
+      <div className="space-y-3 p-4 rounded-2xl bg-surface-container-low dark:bg-[#282a2c]/50 border border-outline-variant/30 dark:border-[#3c4043]">
         <label className="flex items-start gap-3 cursor-pointer">
           <input
             type="checkbox"
             name="consent_privacy"
             checked={formData.consent_privacy || false}
             onChange={handleChange}
-            className="mt-1 w-4 h-4 rounded text-[#14508A] focus:ring-[#14508A] border-gray-300"
+            className="mt-1 w-4 h-4 rounded text-[#14508A] focus:ring-[#14508A] border-outline-variant"
           />
-          <span className="text-xs text-on-surface-variant dark:text-gray-300 leading-relaxed">
+          <span className="text-xs text-on-surface-variant leading-relaxed">
             {t('consent_privacy')}
           </span>
         </label>
@@ -294,9 +294,9 @@ export function Step1DataDiri({ formData, onChange, locale, onNext }: Step1Props
             name="consent_informed"
             checked={formData.consent_informed || false}
             onChange={handleChange}
-            className="mt-1 w-4 h-4 rounded text-[#14508A] focus:ring-[#14508A] border-gray-300"
+            className="mt-1 w-4 h-4 rounded text-[#14508A] focus:ring-[#14508A] border-outline-variant"
           />
-          <span className="text-xs text-on-surface-variant dark:text-gray-300 leading-relaxed">
+          <span className="text-xs text-on-surface-variant leading-relaxed">
             {t('consent_informed')}
           </span>
         </label>
@@ -311,10 +311,10 @@ export function Step1DataDiri({ formData, onChange, locale, onNext }: Step1Props
       <div className="flex justify-end pt-4">
         <button
           type="submit"
-          className="inline-flex items-center gap-2 bg-[#F58A31] hover:bg-[#e07722] text-[#14508A] font-bold text-sm px-8 py-3.5 rounded-full shadow-orange-glow transition-all duration-200 active:scale-95"
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#F58A31] hover:bg-[#e07722] text-[#14508A] font-bold text-sm px-8 py-3.5 rounded-full shadow-orange-glow transition-all duration-200 active:scale-95"
         >
           <span>{tCommon('cta_next')}</span>
-          <ArrowRight className="w-4 h-4" />
+          <ArrowRight className="w-4 h-4 font-bold" />
         </button>
       </div>
     </form>

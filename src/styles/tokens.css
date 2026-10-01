@@ -1,6 +1,6 @@
 /* =============================================================
    Cognesia Design Tokens
-   Light + Dark mode via CSS custom properties
+   Inspired by Gemini & NotebookLM UI (Clean, high-contrast, modern)
    ============================================================= */
 
 :root {
@@ -10,81 +10,89 @@
   --brand-accent: #F58A31;
   --brand-accent-hover: #E07A22;
 
-  /* ── Background ───────────────────────────────────────────── */
-  --bg-canvas: #FFFFFF;
-  --bg-surface: #F6F8FB;
-  --bg-surface-alt: #EDF1F7;
+  /* ── Background & Surfaces (Gemini Light) ────────────────── */
+  --bg-canvas: #f8fafd;
+  --bg-surface: #ffffff;
+  --bg-surface-alt: #f0f4f9;
+  --bg-surface-hover: #e8edf5;
+  --bg-surface-elevated: #ffffff;
 
-  /* ── Text ──────────────────────────────────────────────────── */
-  --text-primary: #1F2937;
-  --text-secondary: #6B7280;
-  --text-on-accent: #14508A;    /* Navy on orange buttons */
-  --text-on-primary: #FFFFFF;   /* White on navy buttons */
+  /* ── Text (High Contrast) ─────────────────────────────────── */
+  --text-primary: #1f1f1f;
+  --text-secondary: #444746;
+  --text-muted: #747775;
+  --text-on-accent: #14508A;    /* Navy text on orange buttons for WCAG AA */
+  --text-on-primary: #ffffff;   /* White on navy buttons */
 
   /* ── Border ────────────────────────────────────────────────── */
-  --border-subtle: #E5E7EB;
-  --border-strong: #D1D5DB;
+  --border-subtle: #e3e3e3;
+  --border-strong: #c4c7c5;
 
   /* ── Status ────────────────────────────────────────────────── */
-  --status-success: #059669;
-  --status-success-bg: #ECFDF5;
-  --status-warning: #D97706;
-  --status-warning-bg: #FFFBEB;
-  --status-error: #DC2626;
-  --status-error-bg: #FEF2F2;
+  --status-success: #137333;
+  --status-success-bg: #e6f4ea;
+  --status-warning: #b06000;
+  --status-warning-bg: #fef7e0;
+  --status-error: #c5221f;
+  --status-error-bg: #fce8e6;
 
-  /* ── Misc ──────────────────────────────────────────────────── */
-  --shadow-color: 220 15% 20%;
-  --radius: 8px;
-  --radius-lg: 12px;
+  /* ── Shadows & Radius ──────────────────────────────────────── */
+  --shadow-ambient: 0 1px 3px rgba(20, 80, 138, 0.04), 0 4px 12px rgba(20, 80, 138, 0.03);
+  --shadow-interactive: 0 4px 6px -1px rgba(20, 80, 138, 0.06), 0 12px 24px -4px rgba(20, 80, 138, 0.08);
+  --shadow-orange-glow: 0 4px 14px rgba(245, 138, 49, 0.35);
 
   /* ── Calendar slot states ──────────────────────────────────── */
-  --slot-available: #059669;
-  --slot-available-bg: #ECFDF5;
+  --slot-available: #137333;
+  --slot-available-bg: #e6f4ea;
   --slot-selected: #14508A;
-  --slot-selected-bg: #E8F0FE;
-  --slot-full: #9CA3AF;
-  --slot-full-bg: #F3F4F6;
+  --slot-selected-bg: #e8f0fe;
+  --slot-full: #747775;
+  --slot-full-bg: #f1f3f4;
 }
 
 .dark {
-  /* ── Brand ────────────────────────────────────────────────── */
-  --brand-primary: #60A5FA;       /* Lighter blue for readability */
-  --brand-primary-hover: #93C5FD;
-  --brand-accent: #F59E0B;        /* Slightly warmer orange */
-  --brand-accent-hover: #FBBF24;
+  /* ── Brand (Gemini Dark Theme) ────────────────────────────── */
+  --brand-primary: #8ab4f8;       /* High-contrast readable blue */
+  --brand-primary-hover: #aecbfa;
+  --brand-accent: #f58a31;        /* Distinctive warm accent */
+  --brand-accent-hover: #ffaa55;
 
-  /* ── Background (blue-gray, not pure black) ────────────────── */
-  --bg-canvas: #0F1729;
-  --bg-surface: #1A2332;
-  --bg-surface-alt: #243044;
+  /* ── Background & Surfaces (Gemini Deep Slate) ─────────────── */
+  --bg-canvas: #131314;           /* Deep canvas */
+  --bg-surface: #1e1f20;          /* Surface / cards */
+  --bg-surface-alt: #282a2c;      /* Inputs / secondary cards */
+  --bg-surface-hover: #333538;
+  --bg-surface-elevated: #282a2c;
 
-  /* ── Text ──────────────────────────────────────────────────── */
-  --text-primary: #F1F5F9;
-  --text-secondary: #94A3B8;
-  --text-on-accent: #0F1729;    /* Dark bg on orange buttons */
-  --text-on-primary: #0F1729;   /* Dark bg on blue buttons */
+  /* ── Text (High Contrast Crisp White/Silver) ──────────────── */
+  --text-primary: #e3e3e3;
+  --text-secondary: #c4c7c5;
+  --text-muted: #8e918f;
+  --text-on-accent: #131314;     /* Dark contrast text on orange buttons */
+  --text-on-primary: #131314;    /* Dark contrast text on bright blue */
 
-  /* ── Border ────────────────────────────────────────────────── */
-  --border-subtle: #334155;
-  --border-strong: #475569;
+  /* ── Border (Subtle Contrast) ─────────────────────────────── */
+  --border-subtle: #3c4043;
+  --border-strong: #5f6368;
 
   /* ── Status ────────────────────────────────────────────────── */
-  --status-success: #34D399;
-  --status-success-bg: #064E3B;
-  --status-warning: #FBBF24;
-  --status-warning-bg: #78350F;
-  --status-error: #F87171;
-  --status-error-bg: #7F1D1D;
+  --status-success: #81c995;
+  --status-success-bg: #0d381e;
+  --status-warning: #fdd663;
+  --status-warning-bg: #4a2800;
+  --status-error: #f28b82;
+  --status-error-bg: #5c1410;
 
-  /* ── Misc ──────────────────────────────────────────────────── */
-  --shadow-color: 220 40% 5%;
+  /* ── Shadows ───────────────────────────────────────────────── */
+  --shadow-ambient: 0 1px 3px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-interactive: 0 4px 8px rgba(0, 0, 0, 0.5), 0 12px 24px rgba(0, 0, 0, 0.4);
+  --shadow-orange-glow: 0 4px 16px rgba(245, 138, 49, 0.45);
 
   /* ── Calendar slot states ──────────────────────────────────── */
-  --slot-available: #34D399;
-  --slot-available-bg: #064E3B;
-  --slot-selected: #60A5FA;
-  --slot-selected-bg: #1E3A5F;
-  --slot-full: #6B7280;
-  --slot-full-bg: #1F2937;
+  --slot-available: #81c995;
+  --slot-available-bg: #0d381e;
+  --slot-selected: #8ab4f8;
+  --slot-selected-bg: #173258;
+  --slot-full: #8e918f;
+  --slot-full-bg: #282a2c;
 }

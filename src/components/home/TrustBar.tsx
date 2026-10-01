@@ -40,19 +40,19 @@ export function TrustBar() {
   ]
 
   return (
-    <section className="py-8 bg-surface-container-lowest dark:bg-gray-900 border-y border-outline-variant/20 dark:border-gray-800">
+    <section className="py-7 bg-surface dark:bg-[#1e1f20] border-y border-outline-variant/30 dark:border-[#3c4043]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 items-center divide-y lg:divide-y-0 lg:divide-x divide-outline-variant/20 dark:divide-gray-800">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 items-center">
           {trustFeatures.map((item, idx) => {
             const Icon = item.icon
             return (
-              <div key={idx} className="flex items-center gap-3 pt-3 lg:pt-0 px-2">
-                <Icon className={`w-7 h-7 flex-shrink-0 ${item.color}`} />
-                <div>
-                  <p className="text-xs font-bold text-on-surface dark:text-white">
+              <div key={idx} className="flex items-center gap-2.5 sm:gap-3 p-2 sm:p-3 rounded-xl bg-surface-container-low/60 dark:bg-[#282a2c]/60 border border-outline-variant/20 dark:border-[#3c4043]/60">
+                <Icon className={`w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0 ${item.color}`} />
+                <div className="min-w-0">
+                  <p className="text-xs font-bold text-on-surface truncate">
                     {item.title}
                   </p>
-                  <p className="text-[11px] text-outline">
+                  <p className="text-[10px] sm:text-[11px] text-outline truncate">
                     {item.desc}
                   </p>
                 </div>
@@ -62,18 +62,20 @@ export function TrustBar() {
         </div>
 
         {/* Monochrome Client Logos */}
-        <div className="mt-8 pt-6 border-t border-outline-variant/10 dark:border-gray-800 flex flex-wrap items-center justify-between gap-6 opacity-60 dark:opacity-40 grayscale hover:grayscale-0 transition-all duration-300">
-          <span className="text-xs font-semibold tracking-wider text-outline uppercase">
+        <div className="mt-6 pt-5 border-t border-outline-variant/20 dark:border-[#3c4043] flex flex-wrap items-center justify-between gap-3 sm:gap-6 opacity-70 dark:opacity-50">
+          <span className="text-[11px] sm:text-xs font-semibold tracking-wider text-outline uppercase">
             Mitra Kolaboratif:
           </span>
-          {partnerLogos.map((partner, idx) => (
-            <span
-              key={idx}
-              className="font-heading text-sm md:text-base font-bold tracking-tight text-on-surface dark:text-gray-200"
-            >
-              {partner}
-            </span>
-          ))}
+          <div className="flex flex-wrap items-center gap-3 sm:gap-6">
+            {partnerLogos.map((partner, idx) => (
+              <span
+                key={idx}
+                className="font-heading text-xs sm:text-sm md:text-base font-bold tracking-tight text-on-surface-variant hover:text-on-surface transition-colors"
+              >
+                {partner}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

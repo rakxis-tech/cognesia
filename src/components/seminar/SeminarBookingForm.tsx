@@ -77,20 +77,20 @@ export function SeminarBookingForm({ speaker, locale }: SeminarBookingFormProps)
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <div className="grid md:grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="eventName">{t('form_event_name')}</Label>
-          <Input id="eventName" {...register('eventName')} />
-          {errors.eventName && <p className="text-red-500 text-sm mt-1">{errors.eventName.message}</p>}
+          <Label htmlFor="eventName" className="text-on-surface dark:text-[#e3e3e3]">{t('form_event_name')}</Label>
+          <Input id="eventName" {...register('eventName')} className="mt-1" />
+          {errors.eventName && <p className="text-red-500 text-xs mt-1">{errors.eventName.message}</p>}
         </div>
 
         <div>
-          <Label htmlFor="institution">{t('form_institution')}</Label>
-          <Input id="institution" {...register('institution')} />
-          {errors.institution && <p className="text-red-500 text-sm mt-1">{errors.institution.message}</p>}
+          <Label htmlFor="institution" className="text-on-surface dark:text-[#e3e3e3]">{t('form_institution')}</Label>
+          <Input id="institution" {...register('institution')} className="mt-1" />
+          {errors.institution && <p className="text-red-500 text-xs mt-1">{errors.institution.message}</p>}
         </div>
       </div>
 
       <div>
-        <Label>{t('form_location_type')}</Label>
+        <Label className="text-on-surface dark:text-[#e3e3e3]">{t('form_location_type')}</Label>
         <RadioGroup
           defaultValue="online"
           onValueChange={(value) => setValue('locationType', value as 'online' | 'offline')}
@@ -98,40 +98,40 @@ export function SeminarBookingForm({ speaker, locale }: SeminarBookingFormProps)
         >
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="online" id="online" />
-            <Label htmlFor="online" className="font-normal">{t('form_location_online')}</Label>
+            <Label htmlFor="online" className="font-normal text-on-surface dark:text-[#e3e3e3] cursor-pointer">{t('form_location_online')}</Label>
           </div>
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="offline" id="offline" />
-            <Label htmlFor="offline" className="font-normal">{t('form_location_offline')}</Label>
+            <Label htmlFor="offline" className="font-normal text-on-surface dark:text-[#e3e3e3] cursor-pointer">{t('form_location_offline')}</Label>
           </div>
         </RadioGroup>
       </div>
 
       {locationType === 'offline' && (
         <div>
-          <Label htmlFor="locationDetail">{t('form_location_detail')}</Label>
-          <Input id="locationDetail" {...register('locationDetail')} />
-          {errors.locationDetail && <p className="text-red-500 text-sm mt-1">{errors.locationDetail.message}</p>}
+          <Label htmlFor="locationDetail" className="text-on-surface dark:text-[#e3e3e3]">{t('form_location_detail')}</Label>
+          <Input id="locationDetail" {...register('locationDetail')} className="mt-1" />
+          {errors.locationDetail && <p className="text-red-500 text-xs mt-1">{errors.locationDetail.message}</p>}
         </div>
       )}
 
       <div className="grid md:grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="participants">{t('form_participants')}</Label>
-          <Input id="participants" type="number" min="1" {...register('participants', { valueAsNumber: true })} />
-          {errors.participants && <p className="text-red-500 text-sm mt-1">{errors.participants.message}</p>}
+          <Label htmlFor="participants" className="text-on-surface dark:text-[#e3e3e3]">{t('form_participants')}</Label>
+          <Input id="participants" type="number" min="1" {...register('participants', { valueAsNumber: true })} className="mt-1" />
+          {errors.participants && <p className="text-red-500 text-xs mt-1">{errors.participants.message}</p>}
         </div>
 
         <div>
-          <Label htmlFor="date">{t('form_date')}</Label>
-          <Input id="date" type="date" {...register('date')} />
-          {errors.date && <p className="text-red-500 text-sm mt-1">{errors.date.message}</p>}
+          <Label htmlFor="date" className="text-on-surface dark:text-[#e3e3e3]">{t('form_date')}</Label>
+          <Input id="date" type="date" {...register('date')} className="mt-1" />
+          {errors.date && <p className="text-red-500 text-xs mt-1">{errors.date.message}</p>}
         </div>
       </div>
 
-      <p className="text-sm text-gray-500 italic">{t('note')}</p>
+      <p className="text-xs text-outline italic leading-relaxed">{t('note')}</p>
 
-      <Button type="submit" className="w-full bg-brand-primary text-white">
+      <Button type="submit" className="w-full bg-[#14508A] hover:bg-[#14508A]/90 dark:bg-[#8ab4f8] dark:text-[#121c2a] dark:hover:bg-[#8ab4f8]/90 font-semibold py-3 text-sm sm:text-base rounded-xl transition-all shadow-sm">
         {commonT('cta_submit')}
       </Button>
     </form>

@@ -68,11 +68,11 @@ export function FAQSection() {
             return (
               <div
                 key={idx}
-                className="bg-surface-container-lowest dark:bg-gray-900 rounded-2xl border border-outline-variant/30 dark:border-gray-800 p-5 transition-all shadow-sm"
+                className="bg-surface dark:bg-[#1e1f20] rounded-2xl border border-outline-variant/30 dark:border-[#3c4043] p-5 transition-all shadow-sm"
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full flex items-center justify-between text-left font-heading text-base font-bold text-on-surface dark:text-white"
+                  className="w-full flex items-center justify-between text-left font-heading text-base font-bold text-on-surface"
                   aria-expanded={isOpen}
                 >
                   <span className="pr-4">{faq.q}</span>
@@ -84,7 +84,7 @@ export function FAQSection() {
                   />
                 </button>
                 {isOpen && (
-                  <div className="mt-3 text-sm text-outline border-t border-outline-variant/20 dark:border-gray-800 pt-3 leading-relaxed animate-in fade-in duration-200">
+                  <div className="mt-3 text-sm text-on-surface-variant border-t border-outline-variant/20 dark:border-[#3c4043] pt-3 leading-relaxed animate-in fade-in duration-200">
                     {faq.a}
                   </div>
                 )}

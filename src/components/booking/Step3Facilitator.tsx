@@ -36,67 +36,79 @@ export function Step3Facilitator({ formData, onChange, locale, onNext, onBack }:
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold font-montserrat text-brand-primary">{t('select_facilitator')}</h2>
+      <div>
+        <h2 className="text-xl sm:text-2xl font-bold font-heading text-[#14508A] dark:text-[#8ab4f8]">
+          {t('select_facilitator')}
+        </h2>
+        <p className="text-sm text-on-surface-variant mt-1">
+          Pilih psikolog atau konselor yang sesuai dengan preferensi Anda, atau biarkan sistem mencocokkan jadwal terbaik.
+        </p>
+      </div>
       
       <button 
         onClick={handleAutoAssign}
-        className={`w-full p-4 border-2 rounded-xl text-left transition-all ${
+        className={`w-full p-4 border-2 rounded-2xl text-left transition-all ${
           formData.auto_assign 
-            ? 'border-brand-primary bg-blue-50/50' 
-            : 'border-gray-200 hover:border-blue-300'
+            ? 'border-brand-primary bg-primary/10 dark:bg-[#8ab4f8]/10 ring-2 ring-brand-primary/20' 
+            : 'border-outline-variant/40 dark:border-[#3c4043] bg-surface dark:bg-[#282a2c] hover:border-brand-primary/50'
         }`}
       >
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-brand-primary text-white flex items-center justify-center">
+        <div className="flex items-center gap-3.5">
+          <div className="w-10 h-10 rounded-full bg-brand-primary text-white dark:text-[#131314] flex items-center justify-center flex-shrink-0 font-bold">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
             </svg>
           </div>
           <div>
-            <h3 className="font-bold text-gray-900">{t('pick_for_me')}</h3>
-            <p className="text-sm text-gray-500">Kami akan mencarikan fasilitator yang paling sesuai dengan jadwal dan kebutuhan Anda.</p>
+            <h3 className="font-bold text-base text-on-surface">{t('pick_for_me')}</h3>
+            <p className="text-xs sm:text-sm text-outline">Kami akan mencarikan fasilitator yang paling sesuai dengan jadwal dan kebutuhan Anda.</p>
           </div>
         </div>
       </button>
 
-      <div className="grid sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {facilitators.map(f => (
           <div 
             key={f.id}
-            className={`border-2 rounded-xl p-4 flex flex-col transition-all ${
+            className={`border-2 rounded-2xl p-4 sm:p-5 flex flex-col justify-between transition-all ${
               formData.facilitator_id === f.id && !formData.auto_assign
-                ? 'border-brand-primary bg-blue-50/50 shadow-sm'
-                : 'border-gray-200 hover:border-blue-200'
+                ? 'border-brand-primary bg-primary/10 dark:bg-[#8ab4f8]/10 shadow-sm ring-2 ring-brand-primary/20'
+                : 'border-outline-variant/40 dark:border-[#3c4043] bg-surface dark:bg-[#282a2c] hover:border-brand-primary/50'
             }`}
           >
-            <div className="flex gap-4 mb-4">
-              <div className="w-16 h-16 rounded-full bg-gray-200 overflow-hidden flex-shrink-0">
-                {f.photo_url ? (
-                  <img src={f.photo_url} alt={f.name} className="w-full h-full object-cover" />
-                ) : (
-                  <div className="w-full h-full bg-gray-300"></div>
-                )}
-              </div>
-              <div>
-                <h4 className="font-bold text-gray-900">{f.name}</h4>
-                <p className="text-xs text-brand-primary font-medium">{t(f.type)}</p>
-                <p className="text-sm font-semibold text-gray-700 mt-1">{formatCurrency(f.price_per_session)}<span className="text-xs text-gray-500 font-normal"> {tCommon('per_session')}</span></p>
+            <div>
+              <div className="flex gap-3.5 mb-3">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-surface-container overflow-hidden flex-shrink-0 border border-outline-variant/30">
+                  {f.photo_url ? (
+                    <img src={f.photo_url} alt={f.name} className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="w-full h-full bg-surface-container-high" />
+                  )}
+                </div>
+                <div className="min-w-0">
+                  <h4 className="font-bold text-sm sm:text-base text-on-surface truncate">{f.name}</h4>
+                  <p className="text-xs text-brand-primary font-semibold">{t(f.type)}</p>
+                  <p className="text-xs sm:text-sm font-bold text-on-surface mt-1">
+                    {formatCurrency(f.price_per_session)}
+                    <span className="text-[11px] text-outline font-normal"> {tCommon('per_session')}</span>
+                  </p>
+                </div>
               </div>
             </div>
             
-            <div className="mt-auto pt-4 flex gap-2">
+            <div className="pt-3 border-t border-outline-variant/20 dark:border-[#3c4043] flex gap-2">
               <button 
                 onClick={() => setSelectedFacilitator(f)}
-                className="flex-1 text-sm border border-gray-300 text-gray-700 py-2 rounded-md hover:bg-gray-50"
+                className="flex-1 text-xs sm:text-sm border border-outline-variant/40 dark:border-[#3c4043] text-on-surface py-2.5 px-3 rounded-xl hover:bg-surface-container dark:hover:bg-[#333538] font-medium transition-colors"
               >
                 {t('facilitator_profile')}
               </button>
               <button 
                 onClick={() => handleSelect(f)}
-                className={`flex-1 text-sm py-2 rounded-md font-medium transition-colors ${
+                className={`flex-1 text-xs sm:text-sm py-2.5 px-3 rounded-xl font-bold transition-colors ${
                   formData.facilitator_id === f.id && !formData.auto_assign
-                    ? 'bg-brand-primary text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? 'bg-brand-primary text-white dark:text-[#131314]'
+                    : 'bg-surface-container dark:bg-[#333538] text-on-surface hover:bg-surface-container-high'
                 }`}
               >
                 Pilih
@@ -106,16 +118,19 @@ export function Step3Facilitator({ formData, onChange, locale, onNext, onBack }:
         ))}
       </div>
 
-      <div className="flex justify-between pt-6 border-t mt-8">
-        <button onClick={onBack} className="text-gray-600 px-6 py-2 rounded-lg font-medium hover:bg-gray-100">
+      <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-3 pt-6 border-t border-outline-variant/20 dark:border-[#3c4043] mt-8">
+        <button 
+          onClick={onBack} 
+          className="w-full sm:w-auto px-6 py-3 rounded-full font-medium text-sm text-on-surface-variant hover:bg-surface-container dark:hover:bg-[#282a2c] transition-colors"
+        >
           {tCommon('cta_back')}
         </button>
         <button 
           onClick={onNext} 
           disabled={!formData.facilitator_id && !formData.auto_assign}
-          className="bg-brand-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#F58A31] hover:bg-[#e07722] text-[#14508A] font-bold text-sm px-8 py-3.5 rounded-full shadow-orange-glow transition-all duration-200 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed"
         >
-          {tCommon('cta_next')}
+          <span>{tCommon('cta_next')}</span>
         </button>
       </div>
 

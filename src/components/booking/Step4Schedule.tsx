@@ -77,54 +77,69 @@ export function Step4Schedule({ formData, onChange, locale, onNext, onBack }: St
   const isFormValid = formData.session_format && formData.date && formData.time_slot_id;
 
   return (
-    <div className="space-y-8">
-      <h2 className="text-2xl font-bold font-montserrat text-brand-primary">{t('schedule_title')}</h2>
+    <div className="space-y-6 sm:space-y-8">
+      <div>
+        <h2 className="text-xl sm:text-2xl font-bold font-heading text-[#14508A] dark:text-[#8ab4f8]">
+          {t('schedule_title')}
+        </h2>
+        <p className="text-sm text-on-surface-variant mt-1">
+          Pilih format sesi dan tentukan tanggal serta waktu yang paling nyaman bagi Anda.
+        </p>
+      </div>
       
       {/* Session Format */}
       <div className="space-y-3">
-        <h3 className="font-semibold text-gray-900">{t('session_format')}</h3>
-        <div className="flex gap-4">
-          <label className={`flex-1 border p-4 rounded-xl cursor-pointer flex items-start gap-3 transition-colors ${formData.session_format === 'online_zoom' ? 'border-brand-primary bg-blue-50/50' : 'hover:border-blue-300'}`}>
+        <h3 className="font-semibold text-sm sm:text-base text-on-surface">{t('session_format')}</h3>
+        <div className="flex flex-col sm:flex-row gap-3">
+          <label className={`flex-1 border-2 p-4 rounded-2xl cursor-pointer flex items-start gap-3 transition-all ${
+            formData.session_format === 'online_zoom' 
+              ? 'border-brand-primary bg-primary/10 dark:bg-[#8ab4f8]/10 ring-2 ring-brand-primary/20' 
+              : 'border-outline-variant/40 dark:border-[#3c4043] bg-surface dark:bg-[#282a2c] hover:border-brand-primary/40'
+          }`}>
             <input 
               type="radio" 
               name="format" 
               checked={formData.session_format === 'online_zoom'}
               onChange={() => onChange({ ...formData, session_format: 'online_zoom' })}
-              className="mt-1"
+              className="mt-1 text-[#14508A] focus:ring-[#14508A]"
             />
             <div>
-              <div className="font-medium text-gray-900">{t('online')}</div>
-              <div className="text-xs text-gray-500">{t('online_note')}</div>
+              <div className="font-bold text-sm sm:text-base text-on-surface">{t('online')}</div>
+              <div className="text-xs text-outline mt-0.5">{t('online_note')}</div>
             </div>
           </label>
           
-          <label className={`flex-1 border p-4 rounded-xl cursor-pointer flex items-start gap-3 transition-colors ${formData.session_format === 'offline' ? 'border-brand-primary bg-blue-50/50' : 'hover:border-blue-300'}`}>
+          <label className={`flex-1 border-2 p-4 rounded-2xl cursor-pointer flex items-start gap-3 transition-all ${
+            formData.session_format === 'offline' 
+              ? 'border-brand-primary bg-primary/10 dark:bg-[#8ab4f8]/10 ring-2 ring-brand-primary/20' 
+              : 'border-outline-variant/40 dark:border-[#3c4043] bg-surface dark:bg-[#282a2c] hover:border-brand-primary/40'
+          }`}>
             <input 
               type="radio" 
               name="format" 
               checked={formData.session_format === 'offline'}
               onChange={() => onChange({ ...formData, session_format: 'offline' })}
-              className="mt-1"
+              className="mt-1 text-[#14508A] focus:ring-[#14508A]"
             />
             <div>
-              <div className="font-medium text-gray-900">{t('offline')}</div>
-              <div className="text-xs text-gray-500">{t('offline_note')}</div>
+              <div className="font-bold text-sm sm:text-base text-on-surface">{t('offline')}</div>
+              <div className="text-xs text-outline mt-0.5">{t('offline_note')}</div>
             </div>
           </label>
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
         {/* Calendar */}
         <div>
-          <h3 className="font-semibold text-gray-900 mb-4">Pilih Tanggal</h3>
-          <div className="border rounded-xl p-4 bg-white shadow-sm">
-            <div className="text-center font-semibold mb-4 text-gray-800">
+          <h3 className="font-semibold text-sm sm:text-base text-on-surface mb-3">Pilih Tanggal</h3>
+          <div className="border border-outline-variant/30 dark:border-[#3c4043] rounded-2xl p-4 bg-surface dark:bg-[#282a2c] shadow-sm">
+            <div className="text-center font-bold mb-4 text-on-surface text-sm sm:text-base">
               {new Intl.DateTimeFormat(locale === 'en' ? 'en-US' : 'id-ID', { month: 'long', year: 'numeric' }).format(today)}
             </div>
             <div className="grid grid-cols-7 gap-1 text-center mb-2">
               {['M', 'S', 'S', 'R', 'K', 'J', 'S'].map((d, i) => (
-                <div key={i} className="text-xs font-semibold text-gray-400">{d}</div>
+                <div key={i} className="text-xs font-bold text-outline">{d}</div>
               ))}
             </div>
             <div className="grid grid-cols-7 gap-1">
@@ -141,10 +156,10 @@ export function Step4Schedule({ formData, onChange, locale, onNext, onBack }: St
                     onClick={() => handleDateSelect(dateStr)}
                     disabled={!hasSlots}
                     className={`
-                      p-2 w-full aspect-square rounded-full flex items-center justify-center text-sm transition-colors
-                      ${isSelected ? 'bg-brand-primary text-white font-bold' : ''}
-                      ${!isSelected && hasSlots ? 'bg-green-50 text-green-700 hover:bg-green-100 font-medium' : ''}
-                      ${!isSelected && !hasSlots ? 'text-gray-300 cursor-not-allowed' : ''}
+                      p-2 w-full aspect-square rounded-full flex items-center justify-center text-xs sm:text-sm transition-all
+                      ${isSelected ? 'bg-brand-primary text-white dark:text-[#131314] font-bold shadow-sm' : ''}
+                      ${!isSelected && hasSlots ? 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 hover:bg-emerald-500/25 font-bold' : ''}
+                      ${!isSelected && !hasSlots ? 'text-outline/30 cursor-not-allowed' : ''}
                     `}
                   >
                     {day}
@@ -157,18 +172,21 @@ export function Step4Schedule({ formData, onChange, locale, onNext, onBack }: St
 
         {/* Time Slots */}
         <div>
-          <h3 className="font-semibold text-gray-900 mb-4">Pilih Waktu</h3>
+          <h3 className="font-semibold text-sm sm:text-base text-on-surface mb-3">Pilih Waktu</h3>
           {!selectedDate ? (
-            <div className="border border-dashed border-gray-300 rounded-xl p-8 flex items-center justify-center text-gray-400 text-center h-[280px]">
-              Silakan pilih tanggal terlebih dahulu
+            <div className="border border-dashed border-outline-variant/40 dark:border-[#3c4043] rounded-2xl p-8 flex items-center justify-center text-outline text-center text-xs sm:text-sm h-[280px]">
+              Silakan pilih tanggal terlebih dahulu di kalender
             </div>
           ) : slotsForDate.length === 0 ? (
-            <div className="border rounded-xl p-8 flex items-center justify-center text-gray-500 bg-gray-50 text-center h-[280px]">
+            <div className="border border-outline-variant/30 dark:border-[#3c4043] rounded-2xl p-8 flex items-center justify-center text-outline bg-surface-container-low dark:bg-[#1e1f20] text-center text-xs sm:text-sm h-[280px]">
               Tidak ada slot tersedia di tanggal ini
             </div>
           ) : (
-            <div className="border rounded-xl p-4 bg-white shadow-sm h-[280px] overflow-y-auto">
-              <div className="text-sm text-gray-500 mb-3 pb-2 border-b">{t('duration')}</div>
+            <div className="border border-outline-variant/30 dark:border-[#3c4043] rounded-2xl p-4 bg-surface dark:bg-[#282a2c] shadow-sm h-[280px] overflow-y-auto">
+              <div className="text-xs text-outline mb-3 pb-2 border-b border-outline-variant/20 dark:border-[#3c4043] flex justify-between items-center">
+                <span>{t('duration')}</span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Tersedia</span>
+              </div>
               <div className="grid grid-cols-2 gap-2">
                 {slotsForDate.map(slot => {
                   const isAvailable = slot.is_available && !slot.is_blocked;
@@ -180,19 +198,19 @@ export function Step4Schedule({ formData, onChange, locale, onNext, onBack }: St
                       disabled={!isAvailable}
                       onClick={() => handleSlotSelect(slot.id)}
                       className={`
-                        py-2 px-3 rounded-lg border text-sm font-medium transition-all text-center
-                        ${isSelected ? 'bg-brand-primary border-brand-primary text-white shadow-md' : ''}
-                        ${!isSelected && isAvailable ? 'bg-white border-green-200 text-gray-700 hover:border-green-400 hover:bg-green-50' : ''}
-                        ${!isAvailable ? 'bg-gray-100 border-gray-200 text-gray-400 cursor-not-allowed' : ''}
+                        py-2.5 px-3 rounded-xl border text-xs sm:text-sm font-semibold transition-all text-center
+                        ${isSelected ? 'bg-brand-primary border-brand-primary text-white dark:text-[#131314] shadow-md' : ''}
+                        ${!isSelected && isAvailable ? 'bg-surface-container dark:bg-[#1e1f20] border-emerald-500/40 text-on-surface hover:border-emerald-500' : ''}
+                        ${!isAvailable ? 'bg-surface-container/50 border-outline-variant/20 text-outline/40 cursor-not-allowed' : ''}
                       `}
                     >
-                      {slot.start_time}
+                      {slot.start_time} WIB
                     </button>
                   );
                 })}
               </div>
               {formData.time_slot_id && (
-                <div className="mt-4 p-3 bg-blue-50 text-blue-800 text-xs rounded-lg flex gap-2 items-start">
+                <div className="mt-4 p-3 bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs rounded-xl flex gap-2 items-start">
                   <svg className="w-4 h-4 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                   <span>{t('slot_hold_notice').replace('{minutes}', '15')}</span>
                 </div>
@@ -202,16 +220,19 @@ export function Step4Schedule({ formData, onChange, locale, onNext, onBack }: St
         </div>
       </div>
 
-      <div className="flex justify-between pt-6 border-t mt-8">
-        <button onClick={onBack} className="text-gray-600 px-6 py-2 rounded-lg font-medium hover:bg-gray-100">
+      <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-3 pt-6 border-t border-outline-variant/20 dark:border-[#3c4043] mt-8">
+        <button 
+          onClick={onBack} 
+          className="w-full sm:w-auto px-6 py-3 rounded-full font-medium text-sm text-on-surface-variant hover:bg-surface-container dark:hover:bg-[#282a2c] transition-colors"
+        >
           {tCommon('cta_back')}
         </button>
         <button 
           onClick={onNext} 
           disabled={!isFormValid}
-          className="bg-brand-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#F58A31] hover:bg-[#e07722] text-[#14508A] font-bold text-sm px-8 py-3.5 rounded-full shadow-orange-glow transition-all duration-200 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed"
         >
-          {tCommon('cta_next')}
+          <span>{tCommon('cta_next')}</span>
         </button>
       </div>
     </div>

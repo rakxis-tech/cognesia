@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Link from 'next/link'
 import { useLocale, useTranslations } from 'next-intl'
 import {
@@ -27,6 +27,18 @@ export function Navbar() {
   const locale = useLocale() as Locale
   const [mobileOpen, setMobileOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    setServicesOpen(true)
+  }
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setServicesOpen(false)
+    }, 200)
+  }
 
   const services = [
     {
@@ -102,12 +114,13 @@ export function Navbar() {
           {/* Layanan Dropdown */}
           <div
             className="relative py-2"
-            onMouseEnter={() => setServicesOpen(true)}
-            onMouseLeave={() => setServicesOpen(false)}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           >
             <button
+              type="button"
               onClick={() => setServicesOpen(!servicesOpen)}
-              className="flex items-center gap-1 font-heading text-sm font-semibold text-primary dark:text-primary-container border-b-2 border-primary-container pb-1 focus:outline-none"
+              className="flex items-center gap-1 font-heading text-sm font-semibold text-primary dark:text-primary-container border-b-2 border-primary-container pb-1 focus:outline-none cursor-pointer"
               aria-expanded={servicesOpen}
             >
               <span>{t('services')}</span>
@@ -119,38 +132,46 @@ export function Navbar() {
               />
             </button>
 
-            {/* Dropdown Panel */}
+            {/* Seamless Dropdown Wrapper */}
             {servicesOpen && (
-              <div className="absolute left-0 top-full mt-1 w-80 bg-surface-container-lowest/98 dark:bg-inverse-surface rounded-2xl shadow-interactive border border-outline-variant/30 p-3 animate-in fade-in zoom-in-95 duration-150 z-50">
-                {services.map((item, idx) => {
-                  const Icon = item.icon
-                  return (
-                    <Link
-                      key={idx}
-                      href={item.href}
-                      onClick={() => setServicesOpen(false)}
-                      className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-surface-container-low dark:hover:bg-gray-800 transition-colors"
-                    >
-                      <div
-                        className={cn(
-                          'w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0',
-                          item.bgColor,
-                          item.textColor
-                        )}
+              <div
+                className="absolute left-0 top-full pt-2 w-80 z-50 animate-in fade-in zoom-in-95 duration-150"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                <div className="bg-surface-container-lowest/98 dark:bg-inverse-surface rounded-2xl shadow-interactive border border-outline-variant/30 dark:border-gray-800 p-3">
+                  {services.map((item, idx) => {
+                    const Icon = item.icon
+                    return (
+                      <Link
+                        key={idx}
+                        href={item.href}
+                        onClick={() => {
+                          setServicesOpen(false)
+                        }}
+                        className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-surface-container-low dark:hover:bg-gray-800 transition-colors cursor-pointer group"
                       >
-                        <Icon className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <p className="text-sm font-semibold text-on-surface dark:text-white">
-                          {item.title}
-                        </p>
-                        <p className="text-xs text-outline leading-tight">
-                          {item.desc}
-                        </p>
-                      </div>
-                    </Link>
-                  )
-                })}
+                        <div
+                          className={cn(
+                            'w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105',
+                            item.bgColor,
+                            item.textColor
+                          )}
+                        >
+                          <Icon className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-on-surface dark:text-white group-hover:text-primary dark:group-hover:text-amber-400 transition-colors">
+                            {item.title}
+                          </p>
+                          <p className="text-xs text-outline leading-tight">
+                            {item.desc}
+                          </p>
+                        </div>
+                      </Link>
+                    )
+                  })}
+                </div>
               </div>
             )}
           </div>

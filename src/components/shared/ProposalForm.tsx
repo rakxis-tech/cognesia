@@ -51,7 +51,7 @@ export function ProposalForm({ serviceType, locale }: ProposalFormProps) {
       serviceType: serviceName,
     });
     
-    const phone = '+6281112345678';
+    const phone = '+628888295582';
     const cleanPhone = phone.replace(/[^0-9+]/g, '');
     const waPhone = cleanPhone.startsWith('+') ? cleanPhone.slice(1) : cleanPhone;
     const url = `https://wa.me/${waPhone}?text=${encodeURIComponent(message)}`;

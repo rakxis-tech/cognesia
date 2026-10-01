@@ -71,8 +71,7 @@ export function AssessmentForm({ test, locale }: AssessmentFormProps) {
       preferredDate: data.preferredDate,
     });
     
-    // Default WA number from settings (ideally fetched, but we use hardcoded or from env)
-    const phone = '+6281112345678'; // Example, should come from settings
+    const phone = '+628888295582';
     const cleanPhone = phone.replace(/[^0-9+]/g, '');
     const waPhone = cleanPhone.startsWith('+') ? cleanPhone.slice(1) : cleanPhone;
     const url = `https://wa.me/${waPhone}?text=${encodeURIComponent(message)}`;

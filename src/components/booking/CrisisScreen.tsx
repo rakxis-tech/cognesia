@@ -50,7 +50,7 @@ export function CrisisScreen({ clinicalConfig, locale }: CrisisScreenProps) {
       <div className="pt-6">
         <p className="text-sm text-gray-500 mb-4 italic">{tCrisis('note')}</p>
         <a 
-          href={buildWhatsAppUrl('+628111111111', 'Halo, saya membutuhkan bantuan segera.')} // Use real default WA
+          href={buildWhatsAppUrl('+628888295582', 'Halo Tim Cognesia, saya membutuhkan bantuan darurat segera.')}
           target="_blank" rel="noopener noreferrer"
           className="inline-block bg-green-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-green-600 transition-colors shadow-md"
         >

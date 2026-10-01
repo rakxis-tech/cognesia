@@ -22,9 +22,7 @@ export function Step3Facilitator({ formData, onChange, locale, onNext, onBack }:
   const [selectedFacilitator, setSelectedFacilitator] = useState<Facilitator | null>(null);
 
   useEffect(() => {
-    if (formData.counseling_type) {
-      getFacilitators(formData.counseling_type).then(setFacilitators);
-    }
+    getFacilitators(formData.counseling_type || undefined).then(setFacilitators);
   }, [formData.counseling_type]);
 
   const handleSelect = (f: Facilitator) => {

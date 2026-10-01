@@ -1,0 +1,90 @@
+/* =============================================================
+   Cognesia Design Tokens
+   Light + Dark mode via CSS custom properties
+   ============================================================= */
+
+:root {
+  /* ── Brand ────────────────────────────────────────────────── */
+  --brand-primary: #14508A;
+  --brand-primary-hover: #0E3D6B;
+  --brand-accent: #F58A31;
+  --brand-accent-hover: #E07A22;
+
+  /* ── Background ───────────────────────────────────────────── */
+  --bg-canvas: #FFFFFF;
+  --bg-surface: #F6F8FB;
+  --bg-surface-alt: #EDF1F7;
+
+  /* ── Text ──────────────────────────────────────────────────── */
+  --text-primary: #1F2937;
+  --text-secondary: #6B7280;
+  --text-on-accent: #14508A;    /* Navy on orange buttons */
+  --text-on-primary: #FFFFFF;   /* White on navy buttons */
+
+  /* ── Border ────────────────────────────────────────────────── */
+  --border-subtle: #E5E7EB;
+  --border-strong: #D1D5DB;
+
+  /* ── Status ────────────────────────────────────────────────── */
+  --status-success: #059669;
+  --status-success-bg: #ECFDF5;
+  --status-warning: #D97706;
+  --status-warning-bg: #FFFBEB;
+  --status-error: #DC2626;
+  --status-error-bg: #FEF2F2;
+
+  /* ── Misc ──────────────────────────────────────────────────── */
+  --shadow-color: 220 15% 20%;
+  --radius: 8px;
+  --radius-lg: 12px;
+
+  /* ── Calendar slot states ──────────────────────────────────── */
+  --slot-available: #059669;
+  --slot-available-bg: #ECFDF5;
+  --slot-selected: #14508A;
+  --slot-selected-bg: #E8F0FE;
+  --slot-full: #9CA3AF;
+  --slot-full-bg: #F3F4F6;
+}
+
+.dark {
+  /* ── Brand ────────────────────────────────────────────────── */
+  --brand-primary: #60A5FA;       /* Lighter blue for readability */
+  --brand-primary-hover: #93C5FD;
+  --brand-accent: #F59E0B;        /* Slightly warmer orange */
+  --brand-accent-hover: #FBBF24;
+
+  /* ── Background (blue-gray, not pure black) ────────────────── */
+  --bg-canvas: #0F1729;
+  --bg-surface: #1A2332;
+  --bg-surface-alt: #243044;
+
+  /* ── Text ──────────────────────────────────────────────────── */
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --text-on-accent: #0F1729;    /* Dark bg on orange buttons */
+  --text-on-primary: #0F1729;   /* Dark bg on blue buttons */
+
+  /* ── Border ────────────────────────────────────────────────── */
+  --border-subtle: #334155;
+  --border-strong: #475569;
+
+  /* ── Status ────────────────────────────────────────────────── */
+  --status-success: #34D399;
+  --status-success-bg: #064E3B;
+  --status-warning: #FBBF24;
+  --status-warning-bg: #78350F;
+  --status-error: #F87171;
+  --status-error-bg: #7F1D1D;
+
+  /* ── Misc ──────────────────────────────────────────────────── */
+  --shadow-color: 220 40% 5%;
+
+  /* ── Calendar slot states ──────────────────────────────────── */
+  --slot-available: #34D399;
+  --slot-available-bg: #064E3B;
+  --slot-selected: #60A5FA;
+  --slot-selected-bg: #1E3A5F;
+  --slot-full: #6B7280;
+  --slot-full-bg: #1F2937;
+}

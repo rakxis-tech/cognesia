@@ -1,36 +1,50 @@
-import { useTranslations } from 'next-intl';
-import Link from 'next/link';
+'use client'
+
+import React from 'react'
+import { MessageSquare, Check } from 'lucide-react'
 
 export function CTASection() {
-  const t = useTranslations('home');
-  const tCommon = useTranslations('common');
-
   return (
-    <section className="w-full bg-brand-primary py-20 px-4 md:px-8 text-center">
-      <div className="container mx-auto max-w-3xl">
-        <h2 className="text-h2-mobile md:text-h2 font-heading text-text-on-primary mb-4">
-          {t('cta_bottom_title')}
-        </h2>
-        <p className="text-body-lg text-text-on-primary/90 mb-10">
-          {t('cta_bottom_subtitle')}
-        </p>
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-          <Link
-            href="/konseling"
-            className="w-full md:w-auto px-8 py-3 bg-brand-accent hover:bg-brand-accent-hover text-text-on-accent font-semibold rounded transition-colors"
-          >
-            {tCommon('cta_book_now')}
-          </Link>
-          <a
-            href="https://wa.me/123456789" // This would use the settings ideally
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full md:w-auto px-8 py-3 bg-transparent border-2 border-text-on-primary text-text-on-primary hover:bg-text-on-primary/10 font-semibold rounded transition-colors"
-          >
-            {tCommon('cta_whatsapp')}
-          </a>
+    <section className="py-16 bg-gradient-to-br from-[#14508A] to-[#0b3259] text-white relative overflow-hidden" id="institusi">
+      {/* Decorative Graphic Background */}
+      <div className="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-[#F58A31]/20 blur-3xl pointer-events-none" />
+      <div className="absolute -left-20 -bottom-20 w-80 h-80 rounded-full bg-blue-400/10 blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 backdrop-blur-sm">
+          <div className="max-w-2xl text-left">
+            <span className="px-3.5 py-1 rounded-full bg-[#F58A31] text-[#14508A] text-xs font-bold uppercase tracking-wider inline-block mb-4">
+              Konsultasi Terbuka
+            </span>
+            <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white mb-3">
+              Siap Mengambil Langkah Pertama Bersama Cognesia?
+            </h2>
+            <p className="text-white/80 font-body text-sm md:text-base leading-relaxed">
+              Baik Anda mencari ruang aman untuk kesehatan mental diri, penjurusan studi anak, atau merancang transformasi talenta korporat berskala ratusan karyawan. Tim ahli kami siap mendampingi.
+            </p>
+            <div className="mt-4 flex flex-wrap items-center gap-4 text-xs text-white/70">
+              <span className="flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-[#F58A31]" /> Respon CS WhatsApp Cepat
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-[#F58A31]" /> Format Pesan Terstruktur
+              </span>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto flex-shrink-0">
+            <a
+              href="https://wa.me/628888295582?text=Halo%20Admin%20Cognesia,%20saya%20ingin%20jadwalkan%20konsultasi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#F58A31] hover:bg-[#e07722] text-[#14508A] font-bold text-sm px-8 py-4 rounded-full shadow-orange-glow transition-all duration-200 active:scale-95 text-center"
+            >
+              <MessageSquare className="w-5 h-5" />
+              <span>Chat WhatsApp: 08888295582</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
-  );
+  )
 }

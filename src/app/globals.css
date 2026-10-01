@@ -9,47 +9,32 @@
   }
 
   body {
-    @apply bg-canvas text-text-primary font-body antialiased;
+    @apply bg-background text-on-surface font-body antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading text-brand-primary;
+    @apply font-heading text-on-surface;
   }
 
-  /* Focus visible ring for accessibility */
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-brand-primary;
   }
 
-  /* Smooth scrolling */
   html {
     scroll-behavior: smooth;
-  }
-
-  /* Max prose width for readability */
-  .prose-width {
-    max-width: 70ch;
-  }
-}
-
-@layer components {
-  /* Section alternating backgrounds */
-  .section-white {
-    @apply bg-canvas;
-  }
-
-  .section-gray {
-    @apply bg-surface;
-  }
-
-  /* Container with consistent padding */
-  .section-padding {
-    @apply py-16 md:py-24;
   }
 }
 
 @layer utilities {
-  /* Hide scrollbar but keep functionality */
+  .shadow-ambient {
+    box-shadow: 0 1px 3px rgba(20, 80, 138, 0.04), 0 4px 12px rgba(20, 80, 138, 0.03);
+  }
+  .shadow-interactive {
+    box-shadow: 0 4px 6px -1px rgba(20, 80, 138, 0.06), 0 12px 24px -4px rgba(20, 80, 138, 0.08);
+  }
+  .shadow-orange-glow {
+    box-shadow: 0 4px 14px rgba(245, 138, 49, 0.35);
+  }
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
